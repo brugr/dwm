@@ -1,7 +1,5 @@
 <h1 align="center">dwm</h1>
 
-## About
-
 This is my version of dwm 6.2, with some patches and my keybindings.
 
 The patches i used are:

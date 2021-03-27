@@ -54,6 +54,7 @@ static const Rule rules[] = {
  	{ "notion",   NULL,       NULL,       1 << 6,       0,           -1 },
 	{ "notion", NULL, "notion-enhancer menu", 0,        True,        -1 },
 	{ "spotify",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "clearine", NULL,       "clearine", 0,            True,        -1 },
 };
 
 /* layout(s) */
@@ -63,9 +64,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "t",      tile },    /* first entry is default */
+	{ "f",      NULL },    /* no layout function means floating behavior */
+	{ "tab",      monocle },
 };
 
 /* key definitions */
@@ -85,12 +86,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 
 static const char *rofidrun[] = { "rofi", "-show", "drun"};
 
-static const char *killdwmrun[] = { "killall", "dwm-run", NULL };
-static const char *lockcmd[] = { "light-locker-command", "-l" };
-static const char *shutdowncmd[] = { "shutdown", "now", NULL };
-static const char *rebootcmd[] = { "reboot", NULL };
+static const char *lockcmd[] = { "clearine", NULL };
 
-static const char *termcmd[]  = { "gnome-terminal", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *fmcmd[] = { "nautilus", NULL };
 static const char *browsercmd[] = { "vivaldi-stable", NULL };
 
@@ -141,10 +139,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} }, 	//brightness down
 	{ MODKEY,                       XK_space,  spawn,          {.v = rofidrun} }, 			//rofi drun
 	{ MODKEY|ShiftMask,             XK_z,      quit,           {0} }, 				//quit dwm (will restart with dwm-run)
-	{ MODKEY|Mod1Mask,              XK_z,      spawn,          {.v = killdwmrun} }, 		//kill dwm-run
-	{ MODKEY|Mod1Mask,              XK_l,      spawn,          {.v = lockcmd} },			//lock computer
-	{ MODKEY|Mod1Mask,              XK_n,      spawn,          {.v = shutdowncmd} },		//shutdown
-	{ MODKEY|Mod1Mask,              XK_m,      spawn,          {.v = rebootcmd} },			//reboot
+	{ MODKEY|Mod1Mask,              XK_m,      spawn,          {.v = lockcmd} },			//reboot
 
 
 	TAGKEYS(                        XK_1,                      0)
